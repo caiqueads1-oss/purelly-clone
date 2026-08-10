@@ -37,9 +37,13 @@ Advertorial de **Cannella di Ceylon** para o mercado **italiano**, clonado da lo
 1. **Compliance (mais grave):** a copy faz **alegações de doença** (reduzir dano renal, melhorar GFR/creatinina, baixar A1C, "médico dividiu a metformina", evitar diálise). Na UE/Itália suplemento **não pode** alegar tratar/prevenir doença → risco de ban Meta/Google + risco legal. (Mesmo alerta do concorrente Gluconol, desmascarado pelo BUTAC.)
 2. **Marca inconsistente:** alterna "PurelyWell" (22×) vs "Purelly" (5×), inclusive nas reviews e na embalagem das fotos → padronizar.
 3. **Urgência artificial:** countdown + "Rischio Esaurimento Scorte: Alto" → pode reduzir confiança.
-4. **Asterisco (\*) sem legenda** nas estatísticas (84/79/76/71%).
-5. **Estatísticas divergem entre as páginas:** advertorial 84/79/76/71% vs produto 86/72/91/79%.
-6. **Oferta "compra 2 leva 3"** ainda convive com o "fino al 50%" — idealmente 1 oferta principal.
+4. **Oferta "compra 2 leva 3"** ainda convive com o "fino al 50%" — idealmente 1 oferta principal.
+
+### ✅ Resolvido / decidido (não reabrir)
+- **Asterisco das estatísticas:** legenda adicionada, texto idêntico ao da página de produto ("*Basato sul feedback dei clienti e sui sondaggi post-acquisto. I risultati individuali possono variare.").
+- **"Divergência" de estatísticas entre as páginas:** era leitura errada. São **perguntas de pesquisa diferentes** (advertorial = rins/confiança; produto = recompra/energia/tolerabilidade/satisfação), não os mesmos números em conflito. Nada a alinhar.
+- **As 4 estatísticas (84/79/76/71%) ficam como estão** — decisão explícita do usuário em 2026-08-10, ciente de que "VFG stabile o migliorata ai controlli" e "il medico ha commentato positivamente i valori" são alegação clínica e concentram o risco de compliance. Não sugerir de novo sem ele pedir.
+- **Texto em inglês na copy:** não existe. Varredura de texto visível + atributos deu limpo. Corrigidos `aria-label` do carrossel e labels `Day`/`Hour` do countdown. O `"Unfortunately this store isn't available in your country."` é do tema Shopify (bloqueio geográfico), com `data-country-list=""` → inerte, não renderiza. O inglês real está só nas imagens (ver seção acima).
 
 ### Imagens com texto em inglês (não dá pra corrigir por HTML)
 O texto está **nos pixels**, nos assets do CDN da Shopify. Corrigir exige refazer a imagem (GemPages/Shopify) ou hospedar substituta no próprio repo e trocar o `src`.
