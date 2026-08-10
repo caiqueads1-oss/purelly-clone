@@ -46,11 +46,17 @@ Advertorial de **Cannella di Ceylon** para o mercado **italiano**, clonado da lo
 - **Texto em inglês na copy:** não existe. Varredura de texto visível + atributos deu limpo. Corrigidos `aria-label` do carrossel e labels `Day`/`Hour` do countdown. O `"Unfortunately this store isn't available in your country."` é do tema Shopify (bloqueio geográfico), com `data-country-list=""` → inerte, não renderiza. O inglês real está só nas imagens (ver seção acima).
 
 ### Imagens com texto em inglês (não dá pra corrigir por HTML)
-O texto está **nos pixels**, nos assets do CDN da Shopify. Corrigir exige refazer a imagem (GemPages/Shopify) ou hospedar substituta no próprio repo e trocar o `src`.
-- `DM_20260615180052_002.jpg` — "Before / Insulin Resistance" · "After / Healthy Insulin Signaling"
-- `DM_20260615180052_006.jpg` — "Cassia Cinnamon" · "Ceylon Cinnamon"
-- `DM_20260615180052_007.jpg` — selo "Fairtrade Farmers" + "Mathew Reed, RD" (credencial anglófona)
-- `9.jpg`, `7_*.jpg`, `8_*.jpg` — embalagem diz **"Equivalente a 1200mg"** (o texto da página alega 7.200 mg) e traz texto de IA corrompido ("Setiea Glutiha", "Tectito in Lsberatorio")
+O texto está **nos pixels**, nos assets do CDN da Shopify. Corrigir exige subir a versão em italiano no CDN e trocar o `src` — **cada imagem aparece 9× no HTML** (`base-src`, `src`, `data-src`, `srcset`, `data-srcset` + `<source>` por breakpoint); trocar só uma não adianta.
+
+Ainda abertas:
+- `DM_20260615180052_007.jpg` — selo "Fairtrade Farmers" + "Mathew Reed, RD" (credencial anglófona, não italiana)
+- `9.jpg`, `7_*.jpg`, `8_*.jpg` — embalagem diz **"Equivalente a 1200mg"** (o texto da página e a de produto alegam 7.200 mg) e traz texto de IA corrompido ("Setiea Glutiha", "Tectito in Lsberatorio")
+
+✅ Já trocadas por versões em italiano (2026-08-10):
+- `_002.webp_202608101717.jpg` — "Prima / Resistenza all'Insulina" · "Dopo / Segnalazione dell'Insulina Sana"
+- `_006.webp_202608101717.jpg` — "Cannella Cassia" · "Cannella di Ceylon"
+
+> Ao trocar imagem, conferir proporção. A `_006` foi de 1.50 para 1.34 (mais alta) — passou sem corte porque o GemPages usa `--aspect:auto` + `--h:auto`, então o `--objf:cover` não recorta. Se algum dia houver `--aspect` fixo, uma imagem mais alta corta o rodapé — que é justamente onde ficam os rótulos.
 
 ## Pendências técnicas
 - [ ] Definir/configurar domínio `.online` no Vercel (+ opcional: PostHog → Toolbar → Authorized URLs).
