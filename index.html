@@ -21,6 +21,55 @@
     <script async src="https://pixel.wetracked.io/ppt.js"></script>
     <!-- /WeTracked Pixel -->
 
+    <!-- BB Tracker -->
+    <script>
+    // Pre-seed do dataLayer: o bb-tracker.js instala GTM incondicionalmente e, sem gtmId,
+    // pediria /api/proxy-gtm?id=GTM-XXXXXXX (404 a cada pageview). Marcar gtm.start faz ele pular.
+    window.dataLayer = [{ 'gtm.start': Date.now(), event: 'gtm.js' }];
+    window.BB_TRACKER_CONFIG = {
+        pageType: 'advertorial',
+        pageId: 'purelly_it',
+        capiEndpoint: 'https://bb-tracker-scale10.vercel.app/api/capi/event'
+    };
+    </script>
+    <script src="https://bb-tracker-scale10.vercel.app/bb-tracker.js" defer></script>
+    <script>
+    // Cross-domain: o bb-tracker.js NAO reescreve links de saida. Sem isto, o fbclid que o
+    // Meta poe na URL do advertorial morre no clique e o bridge do Shopify nao tem o que
+    // gravar em cart.attributes -> Purchase chega ao Meta sem fbc.
+    (function(){
+      try {
+        var KEYS = ['fbclid','ttclid','utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+        var params = new URLSearchParams(window.location.search);
+        var carry = {};
+        KEYS.forEach(function(k){
+          var v = params.get(k);
+          if (v) { try { localStorage.setItem('bb_' + k, v); } catch(e){} }
+          if (!v) { try { v = localStorage.getItem('bb_' + k); } catch(e){} }
+          if (v) carry[k] = v;
+        });
+        if (!Object.keys(carry).length) return;
+        var qs = Object.keys(carry).map(function(k){
+          return encodeURIComponent(k) + '=' + encodeURIComponent(carry[k]);
+        }).join('&');
+        function decorate(){
+          document.querySelectorAll('a[href*="purelywell.online"]').forEach(function(a){
+            var h = a.getAttribute('href');
+            if (!h || h.indexOf('fbclid=') >= 0 || h.indexOf('utm_source=') >= 0) return;
+            a.setAttribute('href', h + (h.indexOf('?') >= 0 ? '&' : '?') + qs);
+          });
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', decorate);
+        } else { decorate(); }
+        // GemPages renderiza botoes tarde; repete por 30s como o bridge faz.
+        var ticks = 0;
+        var iv = setInterval(function(){ ticks++; decorate(); if (ticks >= 6) clearInterval(iv); }, 5000);
+      } catch(e){}
+    })();
+    </script>
+    <!-- /BB Tracker -->
+
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
