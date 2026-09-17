@@ -48,11 +48,18 @@
           if (!v) { try { v = localStorage.getItem('bb_' + k); } catch(e){} }
           if (v) carry[k] = v;
         });
-        if (!Object.keys(carry).length) return;
         var qs = Object.keys(carry).map(function(k){
           return encodeURIComponent(k) + '=' + encodeURIComponent(carry[k]);
         }).join('&');
         function decorate(){
+          // Marca os botoes como CTA: o isCTAElement do bb-tracker.js so reconhece href com
+          // checkout|cart|buy|order|comprar|kaufen e texto em EN/ES/DE. Os nossos apontam para
+          // /products/... e dizem "Risparmia fino al 50%" -> nao seriam detectados, e cta_clicked
+          // nunca chegaria ao CAPI. data-bb-cta e o opt-in explicito que ele aceita.
+          document.querySelectorAll('a[href*="purelywell.online/products/"]').forEach(function(a){
+            if (!a.hasAttribute('data-bb-cta')) a.setAttribute('data-bb-cta', '1');
+          });
+          if (!qs) return;
           document.querySelectorAll('a[href*="purelywell.online"]').forEach(function(a){
             var h = a.getAttribute('href');
             if (!h || h.indexOf('fbclid=') >= 0 || h.indexOf('utm_source=') >= 0) return;
