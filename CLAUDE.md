@@ -15,12 +15,23 @@ Advertorial de **Cannella di Ceylon** para o mercado **italiano**, clonado da lo
 - GitHub `caiqueads1-oss` · Vercel `caiqueads1-3619` · PostHog região **US** (`https://us.i.posthog.com`).
 - Deploy: `vercel --prod` (CLI em `~/.local/bin/vercel`). `gh` em `~/.local/bin/gh`.
 
-## Tracking (PostHog no advertorial)
+## Tracking
+### PostHog (advertorial) — analytics de leitura
 - Ativos e verificados ao vivo (`200 OK`): autocapture, pageview/pageleave, heatmaps.
 - **Eventos customizados:** `scroll_depth` (25/50/75/90/100), `section_viewed` (onde abandonam), `cta_click` (`text`, `href`, `scroll_percent`, `seconds_on_page`).
 - **Session Replay: DESLIGADO** (escolha do usuário — ligar em Settings → Project → Replay se quiser).
-- **Divisão:** PostHog só no advertorial; **WeTracked** na página de produto (Shopify). O `cta_click` é a ponte entre os dois.
 - Funil sugerido: `$pageview → scroll_depth(50) → scroll_depth(90) → cta_click`.
+
+### BB Tracker (Meta CAPI server-side) — conversão · desde 2026-09-17
+**Substituiu o WeTracked**, que foi removido do advertorial (commit `2bc4fb8`).
+- **Servidor:** `https://bb-tracker-scale10.vercel.app` · código em `~/bb-tracker` · KEY `PURELLY_IT` · Meta Pixel `1529596315834854`.
+- **No `<head>` do advertorial:** pre-seed do `dataLayer` (mata o GTM placeholder), `BB_TRACKER_CONFIG`, `bb-tracker.js` e um **decorador de links próprio** — o `bb-tracker.js` não reescreve hrefs, e sem isso o `fbclid` morre no clique (domínios diferentes).
+- **Na Shopify:** bridge no `theme.liquid` (grava `fbc`/`fbp`/`utm_*` em `cart.attributes`) + Custom Pixel Meta (relay) + webhook `Order creation`.
+- **Snippets prontos:** `~/bb-tracker/shopify/`.
+- ⚠️ **Editar CTA no advertorial?** Os botões são reconhecidos via `data-bb-cta`, que o decorador aplica em `a[href*="purelywell.online/products/"]`. O detector nativo do `bb-tracker.js` não casa com texto italiano nem com URLs `/products/`.
+- ⚠️ **Nunca testar tracking no Brave** — Shields bloqueia os pixels da Shopify e dá falso negativo completo.
+- ⚠️ **Env var nova no Vercel exige redeploy** (`vercel --prod`), senão o webhook responde 500.
+- Histórico e armadilhas: nota Obsidian `Sessões Claude/2026-09-17 - BB Tracker · tracking próprio (Meta CAPI server-side).md`.
 
 ## Estado vigente da página
 - **Descontos nos CTAs:** os **4** botões dizem "Risparmia fino al **50%**" (um deles "+ Spedizione Gratuita"), alinhados à página de produto.
