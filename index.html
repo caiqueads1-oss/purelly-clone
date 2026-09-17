@@ -17,9 +17,6 @@
     </script>
     <!-- /PostHog Analytics -->
 
-    <!-- WeTracked Pixel -->
-    <script async src="https://pixel.wetracked.io/ppt.js"></script>
-    <!-- /WeTracked Pixel -->
 
     <!-- BB Tracker -->
     <script>
@@ -162,7 +159,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
   function asyncLoad() {
     if (isLoaded) return;
     isLoaded = true;
-    var urls = ["\/\/cdn.shopify.com\/proxy\/165eae7a94c1bc5fb6d445050017a086d603e52220b1eb63552d8a2a5d9d7637\/pixel.wetracked.io\/hrnigx-y9.myshopify.com\/events.js?shop=hrnigx-y9.myshopify.com\u0026sp-cache-control=cHVibGljLCBtYXgtYWdlPTkwMA"];
+    var urls = [];  /* WeTracked removido 2026-09-17 — substituido pelo bb-tracker */
     for (var i = 0; i < urls.length; i++) {
       var s = document.createElement('script');
       s.type = 'text/javascript';
