@@ -38,16 +38,26 @@
       try {
         var KEYS = ['fbclid','ttclid','utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
         var params = new URLSearchParams(window.location.search);
-        var carry = {};
-        KEYS.forEach(function(k){
-          var v = params.get(k);
-          if (v) { try { localStorage.setItem('bb_' + k, v); } catch(e){} }
-          if (!v) { try { v = localStorage.getItem('bb_' + k); } catch(e){} }
-          if (v) carry[k] = v;
-        });
-        var qs = Object.keys(carry).map(function(k){
-          return encodeURIComponent(k) + '=' + encodeURIComponent(carry[k]);
-        }).join('&');
+        function montarQs(){
+          var carry = {};
+          KEYS.forEach(function(k){
+            var v = params.get(k);
+            if (v) { try { localStorage.setItem('bb_' + k, v); } catch(e){} }
+            if (!v) { try { v = localStorage.getItem('bb_' + k); } catch(e){} }
+            if (v) carry[k] = v;
+          });
+          // bb_user_id e o external_id do Meta — o sinal de match mais forte que temos para
+          // visitante anonimo. Fica em localStorage com a chave crua (sem prefixo bb_), posta
+          // la pelo bb-tracker.js. Como ele carrega com defer, so existe depois deste inline:
+          // por isso o qs e remontado a cada passada do decorate(), nao uma vez so.
+          try {
+            var uid = localStorage.getItem('bb_user_id');
+            if (uid) carry['bb_user_id'] = uid;
+          } catch(e){}
+          return Object.keys(carry).map(function(k){
+            return encodeURIComponent(k) + '=' + encodeURIComponent(carry[k]);
+          }).join('&');
+        }
         function decorate(){
           // Marca os botoes como CTA: o isCTAElement do bb-tracker.js so reconhece href com
           // checkout|cart|buy|order|comprar|kaufen e texto em EN/ES/DE. Os nossos apontam para
@@ -56,11 +66,19 @@
           document.querySelectorAll('a[href*="purelywell.online/products/"]').forEach(function(a){
             if (!a.hasAttribute('data-bb-cta')) a.setAttribute('data-bb-cta', '1');
           });
+          var qs = montarQs();
           if (!qs) return;
           document.querySelectorAll('a[href*="purelywell.online"]').forEach(function(a){
-            var h = a.getAttribute('href');
-            if (!h || h.indexOf('fbclid=') >= 0 || h.indexOf('utm_source=') >= 0) return;
-            a.setAttribute('href', h + (h.indexOf('?') >= 0 ? '&' : '?') + qs);
+            // Guarda o href original uma unica vez e reconstroi sempre a partir dele. Assim a
+            // funcao e idempotente: roda a cada 5s e nunca empilha parametros, e uma passada
+            // posterior (ja com bb_user_id disponivel) simplesmente reescreve o link completo.
+            var base = a.getAttribute('data-bb-href');
+            if (!base) {
+              base = a.getAttribute('href');
+              if (!base) return;
+              a.setAttribute('data-bb-href', base);
+            }
+            a.setAttribute('href', base + (base.indexOf('?') >= 0 ? '&' : '?') + qs);
           });
         }
         if (document.readyState === 'loading') {
