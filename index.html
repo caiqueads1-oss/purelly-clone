@@ -36,7 +36,7 @@
     // gravar em cart.attributes -> Purchase chega ao Meta sem fbc.
     (function(){
       try {
-        var KEYS = ['fbclid','ttclid','utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+        var KEYS = ['ttclid','utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
         var params = new URLSearchParams(window.location.search);
         function montarQs(){
           var carry = {};
@@ -53,6 +53,19 @@
           try {
             var uid = localStorage.getItem('bb_user_id');
             if (uid) carry['bb_user_id'] = uid;
+          } catch(e){}
+          // fbc PRONTO, nunca o fbclid cru. O Meta exige que o timestamp dentro do fbc seja o
+          // do clique real; reconstruir depois com Date.now() faz o mesmo fbclid chegar com
+          // horarios diferentes e o Meta acusa "valor fbclid modificado". Por isso montamos
+          // uma vez, persistimos a string inteira e so repassamos.
+          try {
+            var fbc = localStorage.getItem('bb_fbc');
+            var novoFbclid = params.get('fbclid');
+            if (novoFbclid && (!fbc || fbc.indexOf(novoFbclid) < 0)) {
+              fbc = 'fb.1.' + Date.now() + '.' + novoFbclid;
+              localStorage.setItem('bb_fbc', fbc);
+            }
+            if (fbc) carry['fbc'] = fbc;
           } catch(e){}
           return Object.keys(carry).map(function(k){
             return encodeURIComponent(k) + '=' + encodeURIComponent(carry[k]);
