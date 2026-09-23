@@ -50,10 +50,12 @@
           // visitante anonimo. Fica em localStorage com a chave crua (sem prefixo bb_), posta
           // la pelo bb-tracker.js. Como ele carrega com defer, so existe depois deste inline:
           // por isso o qs e remontado a cada passada do decorate(), nao uma vez so.
-          try {
-            var uid = localStorage.getItem('bb_user_id');
-            if (uid) carry['bb_user_id'] = uid;
-          } catch(e){}
+          // window.bbUserId primeiro: localStorage falha em navegador que bloqueia
+          // armazenamento, e ai o external_id nao chegava na loja.
+          var uid = null;
+          try { uid = window.bbUserId || null; } catch(e){}
+          if (!uid) { try { uid = localStorage.getItem('bb_user_id'); } catch(e){} }
+          if (uid) carry['bb_user_id'] = uid;
           // fbc PRONTO, nunca o fbclid cru. O Meta exige que o timestamp dentro do fbc seja o
           // do clique real; reconstruir depois com Date.now() faz o mesmo fbclid chegar com
           // horarios diferentes e o Meta acusa "valor fbclid modificado". Por isso montamos
