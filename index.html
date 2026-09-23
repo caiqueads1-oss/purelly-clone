@@ -64,10 +64,27 @@
           var carry = {};
           KEYS.forEach(function(k){
             var v = params.get(k);
-            if (v) { try { localStorage.setItem('bb_' + k, v); } catch(e){} }
-            if (!v) { try { v = localStorage.getItem('bb_' + k); } catch(e){} }
+            if (v) {
+              try { localStorage.setItem('bb_' + k, v); } catch(e){}
+              if (k === 'ttclid') { try { localStorage.setItem('bb_ttclid_ts', String(Date.now())); } catch(e){} }
+            }
+            if (!v) {
+              try { v = localStorage.getItem('bb_' + k); } catch(e){}
+              // ttclid guardado de visita anterior so vale dentro da janela de 7 dias do TikTok
+              if (v && k === 'ttclid') {
+                var ts = null; try { ts = localStorage.getItem('bb_ttclid_ts'); } catch(e){}
+                if (!ts || (Date.now() - Number(ts)) > 7*24*60*60*1000) v = null;
+              }
+            }
             if (v) carry[k] = v;
           });
+          // _ttp: identificador de navegador emitido pelo proprio TikTok. Existe aqui (o pixel
+          // roda na pagina normal) mas nao na loja (la o pixel roda isolado e nao grava cookie).
+          // Levamos o daqui para a loja, cru, sem alterar.
+          try {
+            var mt = document.cookie.match(/(?:^|; )_ttp=([^;]+)/);
+            if (mt) carry['ttp'] = decodeURIComponent(mt[1]);
+          } catch(e){}
           // bb_user_id e o external_id do Meta — o sinal de match mais forte que temos para
           // visitante anonimo. Fica em localStorage com a chave crua (sem prefixo bb_), posta
           // la pelo bb-tracker.js. Como ele carrega com defer, so existe depois deste inline:
