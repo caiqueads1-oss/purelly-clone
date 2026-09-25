@@ -147,117 +147,235 @@
       } catch(e){}
     })();
     </script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&family=Archivo:wght@500;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}body{margin:0;background:#fff;color:#1d1d1f;font:18px/1.6 Georgia,'Times New Roman',serif}
-.topbar{background:#b3261e;color:#fff;font:600 14px/1.4 -apple-system,Segoe UI,Arial,sans-serif;text-align:center;padding:9px 12px}
-.mast{display:flex;justify-content:space-between;align-items:center;max-width:720px;margin:0 auto;padding:12px 18px;border-bottom:1px solid #e6e6e6;font:700 13px -apple-system,Arial,sans-serif;text-transform:uppercase;letter-spacing:.5px}
-.mast .tag{background:#f1f1f1;color:#b3261e;padding:3px 8px;border-radius:4px}
-.art{max-width:720px;margin:0 auto;padding:10px 18px 90px}
-.kicker{font:700 12px -apple-system,Arial,sans-serif;color:#b3261e;letter-spacing:1px;margin:14px 0 6px}
-h1{font:800 30px/1.2 -apple-system,Segoe UI,Arial,sans-serif;margin:0 0 14px;letter-spacing:-.3px}
-h2{font:800 23px/1.25 -apple-system,Segoe UI,Arial,sans-serif;margin:34px 0 10px}
-.lead{font-size:19px;color:#333}.stars{color:#e0a100;font:700 16px -apple-system,Arial,sans-serif}.stars span{color:#555;font-weight:500}
-img{max-width:100%;height:auto;display:block}.hero{margin:14px 0 18px;border-radius:8px}
-.checks{list-style:none;padding:0;margin:8px 0}.checks li{padding:10px 0 10px 34px;position:relative;border-bottom:1px solid #f0f0f0;font:600 17px/1.4 -apple-system,Arial,sans-serif}
-.checks li:before{content:"✔";position:absolute;left:4px;top:9px;color:#2e7d32;font-size:19px}
-.quote{border-left:4px solid #2e7d32;background:#f6faf6;padding:12px 16px;border-radius:0 8px 8px 0}
-.offer{margin:30px 0;border:2px dashed #2e7d32;border-radius:12px;padding:18px;text-align:center;background:#fbfdfb}
-.offer img{max-width:260px;margin:8px auto}.o-kick{font:800 15px -apple-system,Arial,sans-serif;color:#b3261e;margin:0;letter-spacing:.5px}
-.o-main{font:800 24px/1.25 -apple-system,Arial,sans-serif;margin:6px 0 10px}
-.cta{display:block;background:#2e7d32;color:#fff !important;text-decoration:none;font:800 19px -apple-system,Segoe UI,Arial,sans-serif;padding:16px 14px;border-radius:10px;margin:12px 0 6px;text-align:center;box-shadow:0 4px 0 #1b5e20}
-.cta.big{font-size:20px;padding:18px}.guar{font:600 14px -apple-system,Arial,sans-serif;color:#2e7d32;text-align:center;margin:4px 0}
-.rev{background:#fafafa;border:1px solid #eee;border-radius:10px;padding:14px 16px;margin:12px 0}.rev p{margin:0 0 6px;font-style:italic}.rev span{font:600 14px -apple-system,Arial,sans-serif;color:#555}
-.cmt{border-bottom:1px solid #eee;padding:12px 0;font:15px/1.5 -apple-system,Arial,sans-serif}.cmt p{margin:4px 0 0}.cmt .v{color:#2e7d32;font-size:12px;margin-left:6px}
-.note{font:13px -apple-system,Arial,sans-serif;color:#777}.final{text-align:center}
-.disc{font:12px/1.5 -apple-system,Arial,sans-serif;color:#888;margin-top:34px;border-top:1px solid #eee;padding-top:14px}
-.sticky{position:fixed;left:0;right:0;bottom:0;background:#fff;padding:8px 10px;box-shadow:0 -2px 10px rgba(0,0,0,.12);z-index:50}
-.sticky a{display:block;background:#2e7d32;color:#fff;text-decoration:none;text-align:center;font:800 15px -apple-system,Arial,sans-serif;padding:13px 8px;border-radius:8px}
-@media(max-width:480px){h1{font-size:25px}h2{font-size:21px}body{font-size:17px}}
+:root{--txt:#282828;--green:#3DAA35;--green-h:#146D0E;--check:#57BD62;--blue:#4056AD;--red:#d62828}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--txt);font-family:Montserrat,Arial,sans-serif;font-size:18px;line-height:1.6;padding-bottom:78px}
+img{max-width:100%;display:block}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.topnews{border-bottom:1px solid #e6e6e6;font-size:14px}
+.topnews .wrap{display:flex;justify-content:space-between;align-items:center;padding:10px 16px}
+.topnews b{font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+.topnews .trend{background:var(--red);color:#fff;font-weight:700;font-size:12px;padding:3px 10px;border-radius:3px;text-transform:uppercase}
+.brandbar{background:var(--blue);color:#fff;text-align:center;padding:14px 16px;font-weight:700;font-size:17px;line-height:1.3}
+.brandbar small{display:block;font-weight:500;font-size:13px;opacity:.9;letter-spacing:.6px;text-transform:uppercase}
+.update{background:#fdecea;border-left:5px solid var(--red);color:#8a1c1c;font-weight:600;font-size:16px;padding:12px 14px;margin:18px 0;border-radius:4px;line-height:1.45}
+h1{font-size:31px;line-height:1.25;font-weight:800;margin:10px 0 14px;color:#000}
+.lead{font-size:19px;font-style:italic;color:#444;margin:0 0 12px}
+.stars{color:#f5a623;font-size:20px;letter-spacing:1px}.stars span{color:var(--txt);font-size:15px;font-weight:600;margin-left:6px;letter-spacing:0}
+.byline{display:flex;align-items:center;gap:12px;margin:18px 0;padding:12px 0;border-top:1px solid #eee;border-bottom:1px solid #eee}
+.byline .av{width:58px;height:58px;border-radius:50%;background:#eef1fb;color:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;flex:none;overflow:hidden}
+.byline .av img{width:100%;height:100%;object-fit:cover}
+.byline .who{font-weight:800;font-size:18px;color:#000}
+.byline .ok{display:inline-flex;width:20px;height:20px;border-radius:50%;background:#22b14c;color:#fff;font-size:13px;align-items:center;justify-content:center;margin-left:4px;vertical-align:2px}
+.byline .date{font-size:13px;color:#777}
+p{margin:0 0 16px}
+h2{font-size:26px;line-height:1.3;font-weight:800;color:#000;margin:38px 0 16px}
+.pic{margin:0 0 18px;border-radius:8px;overflow:hidden}
+.checks{list-style:none;padding:0;margin:0 0 20px}
+.checks li{position:relative;padding:8px 0 8px 38px;font-weight:600;border-bottom:1px dashed #e3e3e3}
+.checks li:before{content:"";position:absolute;left:0;top:10px;width:24px;height:24px;border-radius:50%;background:var(--check) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='3' d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/16px no-repeat}
+.wisdom{font-size:21px;font-weight:800;color:#000;margin:26px 0 6px}
+.offer{border:3px dashed var(--red);border-radius:12px;padding:22px 16px;text-align:center;margin:34px 0;background:#fffaf5}
+.offer .o1{font-weight:800;font-size:18px;letter-spacing:1px}
+.offer .o2{font-weight:800;font-size:28px;color:var(--red);margin:2px 0}
+.offer .o3{font-weight:700;font-size:21px}
+.offer .o4{font-size:14px;color:#666;font-style:italic;margin:4px 0 12px}
+.timer{display:flex;justify-content:center;gap:10px;margin:0 0 16px}
+.timer div{background:#000;color:#fff;border-radius:8px;min-width:70px;padding:8px 6px}
+.timer b{display:block;font-family:Archivo,Montserrat,sans-serif;font-size:30px;line-height:1}
+.timer small{font-size:11px;letter-spacing:1px}
+.cta{display:block;background:var(--green);color:#fff;text-decoration:none;font-family:Archivo,Montserrat,sans-serif;font-weight:700;font-size:20px;text-align:center;padding:14px 18px;border-radius:8px;box-shadow:0 4px 4px rgba(18,18,18,.2);transition:background .2s}
+.cta:hover{background:var(--green-h)}
+.guar{font-size:14px;color:#555;margin-top:8px;text-align:center}
+.quote{background:#f7f7f7;border-left:4px solid var(--check);padding:14px 16px;margin:0 0 14px;border-radius:4px;font-style:italic}
+.quote b{display:block;font-style:normal;font-size:15px;margin-top:6px;color:#000}
+.comments{margin:40px 0 10px}
+.comments h3{font-size:20px;border-bottom:1px solid #ddd;padding-bottom:8px;margin:0 0 14px;font-weight:700}
+.cmt{display:flex;gap:10px;margin:0 0 16px;font-family:"Open Sans",Arial,sans-serif;font-size:15px;line-height:1.45}
+.cmt.reply{margin-left:52px}
+.cmt .av{width:42px;height:42px;border-radius:50%;background:#dfe3ee;color:#4b5a86;display:flex;align-items:center;justify-content:center;font-weight:700;flex:none;overflow:hidden}
+.cmt .av img{width:100%;height:100%;object-fit:cover}
+.cmt .bub{background:#f0f2f5;border-radius:16px;padding:8px 12px}
+.cmt .nm{font-weight:700;color:#050505;font-size:14px}
+.cmt .tag{color:#385898;font-weight:600}
+.cmt .act{font-size:12px;color:#65676b;font-weight:600;margin:3px 0 0 12px}
+.final{text-align:center;margin:40px 0 10px}
+.final h2{margin-top:0}
+.final .sub{font-weight:700;font-size:19px;color:var(--red)}
+.risk{display:flex;justify-content:center;align-items:center;gap:8px;font-size:17px;margin:22px 0;flex-wrap:wrap}
+.risk b{color:var(--red);font-weight:800}
+.risk .bar{width:70px;height:16px;border:2px solid var(--red);padding:2px}.risk .bar i{display:block;width:30%;height:100%;background:var(--red)}
+.cta.full{font-size:22px;padding:16px}
+.rev{border:1px solid #e3e3e3;border-radius:10px;padding:18px;max-width:380px;margin:28px auto;font-size:15px}
+.rev h4{text-align:center;margin:0 0 12px;font-size:18px}
+.rev .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.rev .row{display:flex;align-items:center;gap:10px;margin:6px 0;color:var(--green);font-weight:700}
+.rev .row .b{flex:1;height:14px;background:#eee;border-radius:3px;overflow:hidden}.rev .row .b i{display:block;height:100%;background:linear-gradient(90deg,#f7d27a,#f0a50a)}
+.rev .row span:first-child{width:54px}.rev .row span:last-child{width:38px;text-align:right}
+.rev h5{font-size:17px;margin:14px 0 6px}
+.rev .ft{display:flex;justify-content:space-between;margin:4px 0}.rev .ft .s{color:#f5b301}
+.disc{font-size:12px;color:#777;line-height:1.5;border-top:1px solid #eee;padding-top:16px;margin-top:30px}
+.copy{text-align:center;font-size:12px;color:#999;margin:10px 0 20px}
+.sticky{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #ddd;box-shadow:0 -3px 10px rgba(0,0,0,.08);padding:10px 12px;z-index:50}
+.sticky .in{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:10px}
+.sticky .t{flex:1;font-weight:700;font-size:14px;line-height:1.3}.sticky .t span{color:var(--red)}
+.sticky .cta{font-size:16px;padding:11px 14px;white-space:nowrap}
+@media(max-width:600px){body{font-size:17px}h1{font-size:25px}h2{font-size:22px}.timer div{min-width:60px}.offer .o2{font-size:24px}}
 </style>
+
 </head>
 <body>
-<div class="topbar">🍂 <b>AGGIORNAMENTO:</b> l'Offerta Autunnale è attiva — 2 confezioni acquistate = 1 in omaggio</div>
-<header class="mast"><span class="brand">Salute &amp; Benessere</span><span class="tag">Tendenza</span></header>
-<main class="art">
-  <p class="kicker">METABOLISMO · OVER 50</p>
-  <h1>Il «Trucco della Spezia Antica» che Sta Aiutando Migliaia di Italiani Over 50 a Tenere a Bada Glicemia e Colesterolo — Senza Diete Impossibili</h1>
-  <p class="lead">Se combatti ogni giorno con i picchi di glicemia, con un colesterolo che non vuole scendere o con il crollo di energia delle 15:00 che ti lascia senza forze, <b>leggi questo breve articolo prima di fare qualsiasi altra cosa.</b></p>
-  <p class="stars">★★★★★ <span>9.584 recensioni</span></p>
-  <img class="hero" src="https://purelywell.online/cdn/shop/files/purelly-main.jpg" alt="Cannella di Ceylon Purelly 7.200 mg con olio MCT">
 
-  <p>Basta una sola spezia antica — resa finalmente assorbibile da un «acceleratore» naturale — che lavora insieme al tuo corpo e resta delicata sullo stomaco.</p>
-  <p><b>Italiani over 50, ascoltate:</b> c'è un segreto metabolico di cui l'industria farmaceutica non ha alcun interesse a parlarvi. Una spezia non si può brevettare. E quello che non si può brevettare, non si promuove.</p>
-  <p>Il tuo corpo merita un vero reset: aiutare le cellule a rispondere di nuovo all'insulina, sostenere un colesterolo nella norma e darti un'energia costante per tutta la giornata.</p>
-  <p>Ecco perché migliaia di persone over 50 stanno tornando a sentirsi in controllo con la <b>Cannella di Ceylon Purelly con Olio MCT</b>:</p>
+<div class="topnews"><div class="wrap"><div><b>Ultime Notizie</b> – Purelly</div><div class="trend">Di tendenza</div></div></div>
+<div class="brandbar"><small>Purelly · Benessere Metabolico</small>Scelto da Migliaia di Italiani Over 50</div>
+<main class="wrap">
+<div class="update">🚨 <b>AGGIORNAMENTO:</b> la Cannella di Ceylon 7.200 mg sta andando a ruba più in fretta del previsto! Blocca ora il tuo ordine per avere l'Offerta d'Autunno: <b>2 confezioni = 1 in OMAGGIO</b></div>
+<h1>Salute Over 50: Questo «Trucco della Spezia Antica» Sta Aiutando Migliaia di Italiani a Riequilibrare Glicemia e Colesterolo — Senza Diete da Fame</h1>
+<p class="lead">Se combatti ogni giorno con picchi di glicemia, un colesterolo che non vuole scendere o quel crollo di energia delle 15 che ti lascia a pezzi, leggi questo breve articolo prima di fare qualsiasi altra cosa.</p>
+<div class="stars">★★★★★<span>9.584 Valutazioni</span></div>
+<div class="byline" data-slot="autore"><div class="av">P</div><div><div class="who">A cura della Redazione Purelly <span class="ok">✓</span></div><div class="date">Aggiornato di recente · Lettura di 3 minuti</div></div></div>
+<p>Ti basta <b>una sola spezia antica</b>, potenziata da un <b>acceleratore metabolico</b>, che lavora insieme al tuo corpo — senza effetti collaterali e senza creare dipendenza.</p>
+<p><b>Italiani… ascoltate bene:</b> c'è un segreto metabolico che le grandi case farmaceutiche preferirebbero che non conosceste.</p>
+<p>Il tuo corpo merita un <b>vero reset</b>: uno che aiuti le cellule a rispondere di nuovo all'insulina, contrasti l'accumulo di colesterolo e ti dia energia stabile tutto il giorno — senza l'ennesima pastiglia da aggiungere alla lista.</p>
+<p>A differenza dei soliti approcci, questa formula lavora <b>alla radice</b> della stanchezza metabolica e sta già cambiando la vita di migliaia di persone.</p>
+<p>Dopo anni di ricerca, abbiamo trovato la chiave: una soluzione naturale e potente per la glicemia ballerina, il colesterolo alto e l'energia a terra. Non sorprende che questo rimedio accessibile e duraturo stia spopolando sul web!</p>
+<p>Ecco perché migliaia di persone over 50 si sentono finalmente di nuovo in controllo con la <b>Cannella di Ceylon con Olio MCT di Purelly</b>:</p>
 
-  <h2>5 Benefici in Una Sola, Semplice Formula</h2>
-  <ul class="checks">
-    <li>Aiuta a stabilizzare la glicemia e sostiene la sensibilità all'insulina</li>
-    <li>Aiuta a mantenere il colesterolo nella norma</li>
-    <li>Energia costante tutto il giorno, senza crolli</li>
-    <li>Meno voglia di zuccheri dopo i pasti</li>
-    <li>Delicata sullo stomaco: niente Cassia, niente cumarina</li>
-  </ul>
-  <p class="quote">Saggezza antica, confermata dalla scienza moderna. La Cannella di Ceylon 7.200 mg con Olio MCT non è «l'ennesimo integratore»: è la forma giusta, alla dose giusta, con la veicolazione giusta.</p>
+<h2>Distrugge 3 Killer Metabolici con Una Sola, Semplice Formula</h2>
+<div class="pic"><img src="https://cdn.shopify.com/s/files/1/0824/5651/0707/files/9.jpg?width=800" alt="Donna con Purelly e glucometro" loading="lazy"></div>
+<ul class="checks">
+<li>Aiuta ad abbassare la glicemia in modo naturale e sostiene la sensibilità all'insulina</li>
+<li>Aiuta a tenere a bada il colesterolo LDL già nella norma</li>
+<li>Sostiene una pressione sanguigna sana</li>
+<li>Contrasta l'infiammazione interna (la causa nascosta alla radice)</li>
+<li>Ridà energia per tutta la giornata, senza crolli</li>
+</ul>
+<div class="wisdom">Nata dalla saggezza antica, confermata dalla scienza moderna</div>
+<p>La Cannella di Ceylon 7.200 mg con Olio MCT non è l'ennesimo integratore. <b>È un'arma metabolica.</b></p>
 
-  <h2>Senti la Differenza Presto</h2>
-  <p>Non tra mesi. La prima cosa che molti notano, già nei primi giorni, è l'energia: niente più crollo del pomeriggio, testa più lucida.</p>
-  <p>Poi i picchi dopo i pasti iniziano ad appiattirsi — prima ancora che si muova la glicemia a digiuno.</p>
-  <p><b>Non è fortuna. È il tuo metabolismo che torna a lavorare.</b></p>
+<h2>Risultati Rapidi</h2>
+<div class="pic"><img src="https://cdn.shopify.com/s/files/1/0824/5651/0707/files/metabolae_ugc_male-2_italian_purelly.png?width=800" alt="Uomo che assume Purelly" loading="lazy"></div>
+<p>In pochi giorni, non in mesi, sentirai la differenza. Più energia, mente più lucida, basta crolli pomeridiani — già nei primi 5 giorni.</p>
+<p><b>Non è fortuna. È il tuo metabolismo che finalmente si risveglia.</b></p>
 
-  <h2>Immagina di Aprire le Tue Analisi…</h2>
-  <p>…e vedere finalmente i numeri scendere. Senza vivere da monaco, senza rinunciare per sempre al piatto di pasta della domenica.</p>
-  <p>Questa formula aiuta il tuo corpo a gestire zuccheri e grassi come faceva prima che lo stress, l'età e anni di picchi glicemici lo mettessero in difficoltà.</p>
-  <p><b>Migliaia di persone lo stanno già facendo. La prossima puoi essere tu.</b></p>
+<h2>Finalmente Glicemia e Colesterolo Sotto Controllo, Senza l'Ennesima Pastiglia</h2>
+<div class="pic"><img src="https://cdn.shopify.com/s/files/1/0824/5651/0707/files/metabolae_ugc_female-1_italian_purelly.png?width=800" alt="Donna soddisfatta con Purelly" loading="lazy"></div>
+<p>Immagina di aprire le tue analisi e vedere finalmente i valori scendere — senza gli effetti collaterali che conosci bene e senza vivere come un monaco.</p>
+<p>Questa formula sostiene il tuo metabolismo, aiutandoti a gestire zuccheri e grassi come facevi prima che stress, età e ormoni scombinassero tutto.</p>
+<p><b>Migliaia lo stanno già facendo. Ora tocca a te.</b></p>
 
-  <section class="offer">
-    <p class="o-kick">🍂 OFFERTA AUTUNNALE</p>
-    <p class="o-main">2 confezioni acquistate = 1 in omaggio</p>
-    <img src="https://purelywell.online/cdn/shop/files/purelly-main.jpg" alt="Cannella di Ceylon Purelly">
-    <a class="cta" href="https://purelywell.online/products/cannella-di-ceylon-equivalente-a-7200-mg-con-olio-mct">VERIFICA LA DISPONIBILITÀ →</a>
-    <p class="guar">🛡️ Garanzia 90 giorni soddisfatti o rimborsati</p>
-  </section>
+<div class="offer">
+<div class="o1">NON PERDERTI</div>
+<div class="o2">🍂 L'OFFERTA D'AUTUNNO 🍂</div>
+<div class="o3">2 Confezioni = 1 in OMAGGIO</div>
+<div class="o4">* Scorte limitate</div>
+<div class="timer" data-timer><div><b data-h>00</b><small>ORE</small></div><div><b data-m>00</b><small>MIN</small></div><div><b data-s>00</b><small>SEC</small></div></div>
+<a class="cta" href="https://purelywell.online/products/cannella-di-ceylon-equivalente-a-7200-mg-con-olio-mct">APPROFITTA ORA DELL'OFFERTA →</a>
+<div class="guar">🛡️ Garanzia Soddisfatti o Rimborsati 90 Giorni</div>
+</div>
 
-  <h2>Perché la Cannella che Hai Provato Non Ha Funzionato</h2>
-  <p>La maggior parte degli integratori di cannella è <b>Cassia</b>: economica e piena di cumarina, che a dosi quotidiane affatica il fegato. Spesso in dosi da 500 mg che non fanno nulla.</p>
-  <p>Questa è un'altra cosa.</p>
-  <p><b>Vera Cannella di Ceylon, 7.200 mg equivalenti per dose</b> (estratto 12:1). Più <b>olio MCT</b>, che porta i principi attivi — liposolubili — dove devono arrivare. Una capsula di polvere secca, senza grassi, li lascia passare quasi tutti.</p>
-  <p>Niente più tentativi. Niente più soldi buttati.</p>
+<h2>Perché gli Integratori di Cannella Deboli Ti Hanno Deluso</h2>
+<div class="pic"><img src="https://purelywell.online/cdn/shop/files/4.jpg?width=800" alt="Estratto 12:1 equivalente a 7.200 mg" loading="lazy"></div>
+<p>La maggior parte delle pastiglie di cannella è spazzatura. Cannella Cassia da due soldi, che a dosi alte affatica il fegato. Dosi ridicole da 500 mg che non fanno nulla.</p>
+<p><b>Questa è diversa.</b></p>
+<p>La nostra Cannella di Ceylon equivale a <b>7.200 mg per dose</b>. Oltre 12 volte più concentrata di quella che hai provato. In più, l'<b>Olio MCT</b> per spingere l'assorbimento e nutrire subito le tue cellule.</p>
+<p>Basta tentativi. Basta soldi buttati. Solo risultati.</p>
 
-  <h2>La Formula Giusta, Senza Tirare a Indovinare</h2>
-  <p>Decine di marche. Etichette confuse. Promesse vuote. Trovare l'integratore giusto sembra impossibile.</p>
-  <p>Qui è semplice: Cannella di Ceylon a concentrazione clinica, con olio MCT per il massimo assorbimento. <b>Una formula. Un obiettivo: rimettere in equilibrio il tuo metabolismo in modo naturale.</b> Una softgel al giorno.</p>
+<h2>La Formula Esatta che Ti Serve — Senza Tirare a Indovinare</h2>
+<div class="pic"><img src="https://purelywell.online/cdn/shop/files/3.jpg?width=800" alt="Benefici chiave di Purelly" loading="lazy"></div>
+<p>Trovare l'integratore giusto può sembrare impossibile. Decine di marche. Etichette confuse. Promesse vuote.</p>
+<p><b>Qui è tutto semplice.</b></p>
+<p>La nostra Cannella di Ceylon a concentrazione clinica. Potenziata con Olio MCT per il massimo assorbimento. Una formula. Un obiettivo: riportare il tuo metabolismo in equilibrio, in modo naturale.</p>
+<p>Basta tentativi. Basta ricerche infinite. Solo risultati chiari, quando ne hai più bisogno.</p>
 
-  <h2>Il Potere Nascosto della Ceylon + Olio MCT</h2>
-  <p>E se la soluzione fosse sempre stata sotto i nostri occhi?</p>
-  <p>La Cannella di Ceylon si usa da oltre 2.000 anni per l'equilibrio della glicemia e il benessere del cuore. Ma una spezia non si può brevettare — e così è rimasta nell'ombra.</p>
-  <p>Oggi, unita all'olio MCT del cocco, questa spezia antica diventa una formula moderna, più facile da assorbire e più rapida da sentire.</p>
+<h2>Scopri il Potere Nascosto della Cannella di Ceylon + Olio MCT</h2>
+<div class="pic"><img src="https://purelywell.online/cdn/shop/files/2_98f60087-3c2d-4df0-9daf-5858e64cd1d0.jpg?width=800" alt="Capsule di Cannella di Ceylon con Olio MCT" loading="lazy"></div>
+<p>E se la soluzione fosse sempre stata sotto i tuoi occhi?</p>
+<p>La Cannella di Ceylon si usa da oltre <b>2.000 anni</b> per l'equilibrio della glicemia e il benessere del cuore. Ma una spezia non si può brevettare — e così l'hanno lasciata nel dimenticatoio.</p>
+<p>Oggi, unita all'<b>Olio MCT del cocco</b>, questo rimedio antico diventa un concentrato metabolico moderno, che agisce più in fretta e con più forza che mai.</p>
+<p>Con la formula giusta, questi ingredienti diventano un rimedio che ti cambia la vita.</p>
 
-  <h2>Migliaia di Persone Stanno Già Vedendo la Differenza</h2>
-  <div class="rev"><p>«Mio marito prendeva capsule di cannella dalla farmacia, ma non facevano molto e a volte gli davano bruciore di stomaco. Ho scoperto che la maggior parte dei marchi usa Cassia. In un mese la sua energia era più stabile e i valori mattutini sono migliorati <b>dai 140 a costanti 120</b>.»</p><span>— Patrizia S. · Cliente verificato</span></div>
-  <div class="rev"><p>«Ero scettica, ne avevo provati tanti che non facevano nulla. Dopo 8 settimane <b>il mio medico ha notato che i miei valori erano più stabili</b> e mi ha chiesto cosa avevo cambiato. Nessun problema gastrico come con gli altri prodotti.»</p><span>— Margherita R. · Cliente verificato</span></div>
-  <div class="rev"><p>«Come infermiera in pensione sono molto esigente con gli integratori. Lo prendo da 3 mesi: energia la più stabile degli ultimi anni, niente più voglie di zucchero alle 14, e <b>le mie analisi hanno mostrato miglioramenti</b>.»</p><span>— Giovanna T. · Cliente verificato</span></div>
-  <p class="note">*Basato sul feedback dei clienti e sui sondaggi post-acquisto. I risultati individuali possono variare.</p>
+<h2>Migliaia di Italiani Stanno Già Vedendo Risultati Reali</h2>
+<div class="pic"><img src="https://purelywell.online/cdn/shop/files/6_f6d7372b-4cfb-4172-a1e3-775c6f84915d.jpg?width=800" alt="Recensioni dei clienti Purelly" loading="lazy"></div>
+<div class="quote" data-slot="testimonianza-1">«Mio marito prendeva la cannella della farmacia, ma non faceva molto. In un mese i suoi valori mattutini sono passati da 140 a costanti 120.»<b>– Patrizia S., Cliente Verificato</b></div>
+<div class="quote" data-slot="testimonianza-2">«Ero scettica. Dopo 8 settimane il mio medico ha notato che i valori erano più stabili e mi ha chiesto cosa avessi cambiato.»<b>– Margherita R., Cliente Verificato</b></div>
+<div class="quote" data-slot="testimonianza-3">«Niente più voglie di zucchero alle 14. L'energia più stabile degli ultimi anni.»<b>– Giovanna T., Cliente Verificato</b></div>
+<p><b>Non sei solo. E sì, funzionerà anche per te.</b></p>
 
-  <section class="offer">
-    <p class="o-kick">🍂 OFFERTA AUTUNNALE</p>
-    <p class="o-main">2 confezioni acquistate = 1 in omaggio</p>
-    <a class="cta" href="https://purelywell.online/products/cannella-di-ceylon-equivalente-a-7200-mg-con-olio-mct">APPROFITTA DELL'OFFERTA →</a>
-    <p class="guar">🛡️ Garanzia 90 giorni soddisfatti o rimborsati</p>
-  </section>
+<div class="offer">
+<div class="o1">NON PERDERTI</div>
+<div class="o2">🍂 L'OFFERTA D'AUTUNNO 🍂</div>
+<div class="o3">2 Confezioni = 1 in OMAGGIO</div>
+<div class="o4">* Scorte limitate</div>
+<div class="timer" data-timer><div><b data-h>00</b><small>ORE</small></div><div><b data-m>00</b><small>MIN</small></div><div><b data-s>00</b><small>SEC</small></div></div>
+<a class="cta" href="https://purelywell.online/products/cannella-di-ceylon-equivalente-a-7200-mg-con-olio-mct">APPROFITTA ORA DELL'OFFERTA →</a>
+<div class="guar">🛡️ Garanzia Soddisfatti o Rimborsati 90 Giorni</div>
+</div>
 
-  <h2>Cosa Dicono i Clienti</h2>
-  <div class="cmt"><b>Marco M.</b> <span class="v">Cliente verificato</span><p>Per anni la mia glicemia era instabile e ogni misurazione mi dava ansia. Da quando ho iniziato con Purelly tutto sembra più stabile e quei cali pomeridiani non mi controllano più.</p></div>
-  <div class="cmt"><b>Davide L.</b> <span class="v">Cliente verificato</span><p>Le mie mattine sono limpide, i desideri di zucchero sono sotto controllo e l'energia è costante. Non ho più quei crolli e mi sento finalmente equilibrato.</p></div>
-  <div class="cmt"><b>Michele T.</b> <span class="v">Cliente verificato</span><p>Ho buttato tanti soldi in polveri e gommine che non mantenevano nulla. Purelly è stato diverso fin dall'inizio: una softgel al giorno e finalmente l'energia costante che mi mancava da anni.</p></div>
+<section class="comments">
+<h3>Commenti</h3>
+<div class="cmt" data-slot="commento-1"><div class="av">RG</div><div><div class="bub"><div class="nm">Rosanna Galli</div>Qualcuno ha già provato la Cannella di Ceylon di Purelly?</div><div class="act">Mi piace · Rispondi</div></div></div>
+<div class="cmt reply" data-slot="commento-2"><div class="av">GM</div><div><div class="bub"><div class="nm">Graziella Moretti</div>Sì! La prendo da circa 6 settimane e ho molta più energia. Non ho più quel crollo tremendo del pomeriggio. La settimana scorsa la glicemia era finalmente nella norma, per la prima volta da mesi. Sinceramente sono sorpresa che funzioni così bene</div><div class="act">Mi piace · Rispondi</div></div></div>
+<div class="cmt" data-slot="commento-3"><div class="av">LB</div><div><div class="bub"><div class="nm">Loredana Bianchi</div>Io l'ho comprata il mese scorso senza sconto e adesso la mettono in offerta? Che rabbia ahah. Ma mi sta aiutando così tanto che la ricomprerei comunque. I valori sono migliorati e mi sento più stabile.</div><div class="act">Mi piace · Rispondi</div></div></div>
+<div class="cmt" data-slot="commento-4"><div class="av">SR</div><div><div class="bub"><div class="nm">Silvana Ricci</div>Ehi <span class="tag">Anna Conti</span>, è proprio quello che cercavi per tenere a bada la glicemia in modo naturale, senza tutti quegli effetti collaterali che odi!</div><div class="act">Mi piace · Rispondi</div></div></div>
+<div class="cmt reply" data-slot="commento-5"><div class="av">AC</div><div><div class="bub"><div class="nm">Anna Conti</div>Oddio, mi ero dimenticata di dirtelo! L'ho ordinata 2 mesi fa ed è fantastica. L'energia è tornata e all'ultimo controllo il medico mi ha detto che la glicata è scesa a 6,2!</div><div class="act">Mi piace · Rispondi</div></div></div>
+<div class="cmt" data-slot="commento-6"><div class="av">PF</div><div><div class="bub"><div class="nm">Paola Ferri</div>Ho 52 anni e non volevo aggiungere altre medicine, quindi ho provato questa. Funziona davvero! La Ceylon con olio MCT fa proprio la differenza sull'energia. Finalmente sento di prendermi cura della mia salute in modo naturale.</div><div class="act">Mi piace · Rispondi</div></div></div>
+<div class="cmt" data-slot="commento-7"><div class="av">FD</div><div><div class="bub"><div class="nm">Franca De Luca</div>Io e mio marito abbiamo tutti e due la glicemia alta. Aiuta davvero anche con il colesterolo?</div><div class="act">Mi piace · Rispondi</div></div></div>
+<div class="cmt reply" data-slot="commento-8"><div class="av">CR</div><div><div class="bub"><div class="nm">Carla Romano</div>Sì! La prendo da 3 mesi e all'ultimo controllo il colesterolo era sceso. Il medico era sorpreso. È facilissima da prendere e non ho nessuno di quei fastidi allo stomaco che avevo prima. Anche l'energia è molto meglio.</div><div class="act">Mi piace · Rispondi</div></div></div>
+<div class="cmt" data-slot="commento-9"><div class="av">MC</div><div><div class="bub"><div class="nm">Marisa Colombo</div>L'ho presa per mia sorella perché era preoccupata per la glicata e non smette più di parlarne ahah. Dice che ha molta più energia e che la testa annebbiata è praticamente sparita.</div><div class="act">Mi piace · Rispondi</div></div></div>
+</section>
 
-  <h2 class="final">Clicca Qui Sotto e Approfitta dell'Offerta Autunnale</h2>
-  <a class="cta big" href="https://purelywell.online/products/cannella-di-ceylon-equivalente-a-7200-mg-con-olio-mct">SÌ, VOGLIO LA MIA CANNELLA DI CEYLON →</a>
-  <p class="guar">🛡️ Garanzia 90 giorni soddisfatti o rimborsati</p>
+<div class="final">
+<h2>Clicca Qui Sotto e Approfitta Subito della Tua Offerta Speciale!</h2>
+<div class="pic"><img src="https://purelywell.online/cdn/shop/files/purelly-main.jpg?width=800" alt="Purelly Cannella di Ceylon 7.200 mg" loading="lazy"></div>
+<div class="sub">2 Confezioni = 1 in OMAGGIO sul Tuo Primo Ordine!</div>
+<div style="margin-top:14px"><a class="cta" href="https://purelywell.online/products/cannella-di-ceylon-equivalente-a-7200-mg-con-olio-mct">APPROFITTA ORA DELL'OFFERTA →</a></div>
+<div class="guar">🛡️ Garanzia Soddisfatti o Rimborsati 90 Giorni</div>
+<div class="risk">Rischio Esaurimento: <b>ALTO</b> <span class="bar"><i></i></span> | <b>Scorte Limitate</b></div>
+<h2>Finalmente un Modo Naturale per Riequilibrare la Glicemia</h2>
+<div class="pic"><img src="https://cdn.shopify.com/s/files/1/0824/5651/0707/files/canella1.jpg?width=800" alt="Purelly Cannella di Ceylon" loading="lazy"></div>
+<a class="cta full" href="https://purelywell.online/products/cannella-di-ceylon-equivalente-a-7200-mg-con-olio-mct">➜ PRENDI ORA LA CONFEZIONE IN OMAGGIO!</a>
+</div>
 
-  <p class="disc">Questo contenuto ha scopo esclusivamente informativo e non costituisce consiglio medico, diagnosi o trattamento. Gli integratori non sostituiscono una dieta varia ed equilibrata né le terapie prescritte. Consulta sempre il tuo medico prima di iniziare un nuovo integratore, soprattutto se assumi farmaci. I risultati individuali possono variare. © 2026 Purelly</p>
+<div class="rev" data-slot="riepilogo-recensioni">
+<h4>Recensioni dei Clienti</h4>
+<div class="top"><span class="stars">★★★★★</span><b>4,9 su 5</b></div>
+<div class="row"><span>5 Stelle</span><span class="b"><i style="width:92%"></i></span><span>92%</span></div>
+<div class="row"><span>4 Stelle</span><span class="b"><i style="width:6%"></i></span><span>6%</span></div>
+<div class="row"><span>3 Stelle</span><span class="b"><i style="width:1%"></i></span><span>1%</span></div>
+<div class="row"><span>2 Stelle</span><span class="b"><i style="width:0%"></i></span><span>0%</span></div>
+<div class="row"><span>1 Stella</span><span class="b"><i style="width:1%"></i></span><span>1%</span></div>
+<h5>Per Caratteristica</h5>
+<div class="ft"><span>Prezzo</span><span><span class="s">★★★★★</span> 4,8</span></div>
+<div class="ft"><span>Efficacia</span><span><span class="s">★★★★★</span> 4,9</span></div>
+<div class="ft"><span>Facilità d'uso</span><span><span class="s">★★★★★</span> 5,0</span></div>
+<div class="ft"><span>Qualità</span><span><span class="s">★★★★★</span> 4,9</span></div>
+</div>
+
+<p class="disc">Questo contenuto ha scopo esclusivamente informativo e non costituisce consiglio medico, diagnosi o trattamento. Consulta sempre un professionista sanitario qualificato prima di iniziare un nuovo integratore, una nuova routine o un nuovo percorso, soprattutto se assumi farmaci. Gli integratori non sostituiscono una dieta varia ed equilibrata né le terapie prescritte. I risultati individuali possono variare. Le opinioni espresse in questo articolo sono quelle delle singole persone e non rappresentano necessariamente le affermazioni del produttore. Tutti i marchi e i diritti d'autore appartengono ai rispettivi proprietari.</p>
+<div class="copy">©2026 Purelly. Tutti i diritti riservati.</div>
 </main>
-<div class="sticky"><a href="https://purelywell.online/products/cannella-di-ceylon-equivalente-a-7200-mg-con-olio-mct">🍂 2 confezioni = 1 in omaggio · Verifica disponibilità →</a></div>
+<div class="sticky"><div class="in"><div class="t">🍂 Offerta d'Autunno<br><span>2 confezioni = 1 in omaggio</span></div><a class="cta" href="https://purelywell.online/products/cannella-di-ceylon-equivalente-a-7200-mg-con-olio-mct">APPROFITTA →</a></div></div>
+<script>
+/* Countdown: se OFFER_END (ISO) estiver preenchido, conta ate essa data; senao, ate a meia-noite local. */
+(function(){
+  var OFFER_END = "";
+  function end(){ if(OFFER_END) return new Date(OFFER_END); var d=new Date(); d.setHours(24,0,0,0); return d; }
+  function pad(n){ return (n<10?"0":"")+n; }
+  function tick(){
+    var ms=Math.max(0,end()-new Date()), t=Math.floor(ms/1000);
+    document.querySelectorAll("[data-timer]").forEach(function(el){
+      el.querySelector("[data-h]").textContent=pad(Math.floor(t/3600));
+      el.querySelector("[data-m]").textContent=pad(Math.floor(t%3600/60));
+      el.querySelector("[data-s]").textContent=pad(t%60);
+    });
+  }
+  tick(); setInterval(tick,1000);
+})();
+</script>
 
 <!-- Advertorial funnel tracking -->
     <script>
